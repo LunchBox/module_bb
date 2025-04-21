@@ -1,57 +1,3 @@
-<template>
-  <div class="courier-pending">
-    <header>
-      <h1>Pending Packages</h1>
-    </header>
-
-    <Tabs :tabs="tabs" v-model:activeTab="activeTab" />
-
-    <div v-if="activeTab === 'pickup'" class="pickup-tab">
-      <div class="package-list">
-        <div
-          v-for="pkg in pendingPickupPackages"
-          :key="pkg.id"
-          class="package-item"
-        >
-          <input
-            type="checkbox"
-            :id="`package-${pkg.id}`"
-            v-model="selectedPackages"
-            :value="pkg.id"
-          />
-          <PackageCard :package="pkg" />
-        </div>
-      </div>
-
-      <div class="actions">
-        <div class="selection-info">
-          <span>{{ selectedPackages.length }} selected</span>
-          <label>
-            <input
-              type="checkbox"
-              v-model="selectAll"
-              @change="toggleSelectAll"
-            />
-            Select All
-          </label>
-        </div>
-        <button
-          @click="pickupSelected"
-          :disabled="selectedPackages.length === 0 || isLoading"
-        >
-          {{ isLoading ? "Processing..." : "Pickup" }}
-        </button>
-      </div>
-    </div>
-
-    <div v-else class="delivery-tab">
-      <!-- 待派送包裹类似实现 -->
-    </div>
-
-    <div v-if="error" class="error">{{ error }}</div>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import Tabs from "@/components/Staff/Courier/Tabs.vue";
@@ -100,6 +46,66 @@ const pickupSelected = async () => {
 };
 </script>
 
+<template>
+  <div class="courier-pending">
+    <header>
+      <h1>Pending Packages</h1>
+    </header>
+
+    <Tabs :tabs="tabs" v-model:activeTab="activeTab" />
+
+    <div v-if="activeTab === 'pickup'" class="pickup-tab">
+      <div class="package-list">
+        <div
+          v-for="pkg in pendingPickupPackages"
+          :key="pkg.id"
+          class="package-item"
+        >
+          <input
+            type="checkbox"
+            :id="`package-${pkg.id}`"
+            v-model="selectedPackages"
+            :value="pkg.id"
+          />
+          <PackageCard :pkg="pkg" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="selection-info">
+          <span>{{ selectedPackages.length }} selected</span>
+          <label>
+            <input
+              type="checkbox"
+              v-model="selectAll"
+              @change="toggleSelectAll"
+            />
+            Select All
+          </label>
+        </div>
+        <button
+          @click="pickupSelected"
+          :disabled="selectedPackages.length === 0 || isLoading"
+        >
+          {{ isLoading ? "Processing..." : "Pickup" }}
+        </button>
+      </div>
+    </div>
+
+    <div v-else class="delivery-tab">
+      <!-- 待派送包裹类似实现 -->
+    </div>
+
+    <div v-if="error" class="error">{{ error }}</div>
+  </div>
+</template>
+
 <style scoped>
 /* 样式代码 */
+
+.package-item {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
 </style>
