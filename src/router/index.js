@@ -32,6 +32,12 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
+    path: "/send_success",
+    name: "SendPackageSuccess",
+    component: () => import("../views/Client/SendSuccess.vue"),
+    meta: { requiresAuth: true },
+  },
+  {
     path: "/mypackages",
     name: "MyPackages",
     component: () => import("../views/Client/MyPackages.vue"),

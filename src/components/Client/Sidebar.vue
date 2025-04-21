@@ -11,10 +11,10 @@ const { signOut } = useAuth();
         <RouterLink to="/">Index</RouterLink>
       </div>
       <div>
-        <RouterLink to="/">Send Packages</RouterLink>
+        <RouterLink to="/send">Send Packages</RouterLink>
       </div>
       <div>
-        <RouterLink to="/">My Packages</RouterLink>
+        <RouterLink to="/mypackages">My Packages</RouterLink>
       </div>
       <hr />
       <div>User's name</div>
