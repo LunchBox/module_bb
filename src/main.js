@@ -1,11 +1,16 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
 
-const app = createApp(App)
+import axios from "axios";
 
-app.use(router)
+// 设置axios基础URL
+axios.defaults.baseURL = "http://localhost:8000";
 
-app.mount('#app')
+const app = createApp(App);
+
+app.use(router);
+
+app.mount("#app");
