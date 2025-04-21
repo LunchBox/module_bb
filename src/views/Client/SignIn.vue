@@ -21,5 +21,9 @@ async function onSubmit() {
       <input type="password" v-model="formData.password" />
       <button>Sign In</button>
     </form>
+    <div>
+      New Account?
+      <RouterLink to="/signup">Sign up</RouterLink>
+    </div>
   </div>
 </template>

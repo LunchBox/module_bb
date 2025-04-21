@@ -1,3 +1,8 @@
+<script setup>
+import { useAuth } from "@/composables/useAuth";
+const { signOut } = useAuth();
+</script>
+
 <template>
   <div>
     <div>LOGO</div>
@@ -14,7 +19,7 @@
       <hr />
       <div>User's name</div>
       <div>
-        <a href="">Logout</a>
+        <a href="#" @click.prevent="signOut">Logout</a>
       </div>
 
       <div>
