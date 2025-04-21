@@ -1,36 +1,38 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import { useAuth } from "@/composables/useAuth";
+
 const routes = [
   {
-    path: "/XX_Module_B/",
+    path: "/",
     name: "ClientIndex",
     component: () => import("../views/Client/Index.vue"),
   },
   {
-    path: "/XX_Module_B/track/:trackingNumber",
+    path: "/track/:trackingNumber",
     name: "TrackPackage",
     component: () => import("../views/Client/TrackPackage.vue"),
   },
   {
-    path: "/XX_Module_B/signin",
+    path: "/signin",
     name: "ClientSignIn",
     component: () => import("../views/Client/SignIn.vue"),
     meta: { requiresGuest: true },
   },
   {
-    path: "/XX_Module_B/signup",
+    path: "/signup",
     name: "ClientSignUp",
     component: () => import("../views/Client/SignUp.vue"),
     meta: { requiresGuest: true },
   },
   {
-    path: "/XX_Module_B/send",
+    path: "/send",
     name: "SendPackage",
     component: () => import("../views/Client/SendPackage.vue"),
     meta: { requiresAuth: true },
   },
   {
-    path: "/XX_Module_B/mypackages",
+    path: "/mypackages",
     name: "MyPackages",
     component: () => import("../views/Client/MyPackages.vue"),
     meta: { requiresAuth: true },
@@ -38,13 +40,13 @@ const routes = [
 
   // 员工路由
   {
-    path: "/XX_Module_B/staff",
+    path: "/staff",
     name: "StaffSignIn",
     component: () => import("../views/Staff/SignIn.vue"),
     meta: { requiresStaffGuest: true },
   },
   {
-    path: "/XX_Module_B/staff/courier",
+    path: "/staff/courier",
     component: () => import("../views/Staff/Courier/Pending.vue"),
     meta: { requiresStaffAuth: true, role: "courier" },
     children: [
@@ -66,7 +68,7 @@ const routes = [
     ],
   },
   {
-    path: "/XX_Module_B/staff/trucker",
+    path: "/staff/trucker",
     component: () => import("../views/Staff/Trucker/Operate.vue"),
     meta: { requiresStaffAuth: true, role: "trucker" },
     children: [

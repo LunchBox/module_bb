@@ -1,27 +1,3 @@
-<template>
-  <div class="client-index">
-    <Sidebar />
-
-    <Banner :images="bannerImages" />
-
-    <div class="track-form">
-      <input
-        v-model="trackingNumber"
-        type="text"
-        placeholder="Enter tracking number"
-      />
-      <button @click="trackPackage">Track</button>
-    </div>
-
-    <div class="actions">
-      <button @click="goToSendPackage">Send Package</button>
-      <button @click="goToMyPackages">My Packages</button>
-    </div>
-
-    <div v-if="error" class="error">{{ error }}</div>
-  </div>
-</template>
-
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -57,6 +33,30 @@ const goToMyPackages = () => {
   router.push({ name: "MyPackages" });
 };
 </script>
+
+<template>
+  <div class="client-index">
+    <Sidebar />
+
+    <Banner :images="bannerImages" />
+
+    <div class="track-form">
+      <input
+        v-model="trackingNumber"
+        type="text"
+        placeholder="Enter tracking number"
+      />
+      <button @click="trackPackage">Track</button>
+    </div>
+
+    <div class="actions">
+      <button @click="goToSendPackage">Send Package</button>
+      <button @click="goToMyPackages">My Packages</button>
+    </div>
+
+    <div v-if="error" class="error">{{ error }}</div>
+  </div>
+</template>
 
 <style scoped>
 /* 样式代码 */
